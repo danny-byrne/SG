@@ -5,7 +5,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">Sacred Gatherings</header>
-      <Registration />
+      <div id="body">
+        <Registration />
+      </div>
     </div>
   );
 }

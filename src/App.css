@@ -1,21 +1,18 @@
 .App {
-  text-align: center;
+  background-color: #282c34;
+  color: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,15 +21,37 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+#RegistrationForm {
+  display: grid;
+  grid-template-columns: auto auto;
+  height: 80vh;
+  width: 50vw;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.element {
+  display: flex;
+  flex-direction: column;
+}
+
+.element.left {
+  grid-column-start: 1;
+}
+
+.element.right {
+  grid-column-start: 2;
+}
+
+.element.whole {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.input {
+  width: 50%;
+}
+
+.textField {
+  grid-column-start: 1;
+  width: 100%;
+  height: 10vh;
 }

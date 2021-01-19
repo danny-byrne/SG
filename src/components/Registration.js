@@ -28,89 +28,106 @@ export default function Registration() {
 
   const classes = {
     input: "input",
-    textfield: "textfield",
+    textfield: "textField",
+  };
+
+  const makeFormField = (getter, setter, text, style, column) => {
+    return {
+      getter,
+      setter,
+      text,
+      class: style,
+      column: `element ${column}`,
+    };
   };
 
   const formFields = [
-    {
-      getter: firstName,
-      setter: setFirstName,
-      text: firstNameText,
-      class: classes.input,
-    },
-    {
-      getter: lastName,
-      setter: setLastName,
-      text: lastNameText,
-      class: classes.input,
-    },
-    { getter: email, setter: setEmail, text: emailText, class: classes.input },
-    {
-      getter: phoneNumber,
-      setter: setPhoneNumber,
-      text: phoneNumberText,
-      class: classes.input,
-    },
-    {
-      getter: emContact,
-      setter: setEmContact,
-      text: emContactText,
-      class: classes.input,
-    },
-    {
-      getter: dateOfBirth,
-      setter: setDateOfBirth,
-      text: dateOfBirthText,
-      class: classes.input,
-    },
-    {
-      getter: medications,
-      setter: setMedications,
-      text: medicationsText,
-      class: classes.textfield,
-    },
-    {
-      getter: medicalConditions,
-      setter: setMedicalConditions,
-      text: medicalConditionsText,
-      class: classes.textfield,
-    },
-    {
-      getter: injuriesAllergies,
-      setter: setInjuriesAllergies,
-      text: injuriesAllergiesText,
-      class: classes.textfield,
-    },
-    {
-      getter: experienced,
-      setter: setExperienced,
-      text: experiencedText,
-      class: classes.textfield,
-    },
-    {
-      getter: intentions,
-      setter: setIntentions,
-      text: intentionsText,
-      class: classes.textfield,
-    },
+    makeFormField(
+      firstName,
+      setFirstName,
+      firstNameText,
+      classes.input,
+      "left"
+    ),
+    makeFormField(lastName, setLastName, lastNameText, classes.input, "right"),
+    makeFormField(
+      phoneNumber,
+      setPhoneNumber,
+      phoneNumberText,
+      classes.input,
+      "left"
+    ),
+    makeFormField(
+      dateOfBirth,
+      setDateOfBirth,
+      dateOfBirthText,
+      classes.input,
+      "right"
+    ),
+    makeFormField(email, setEmail, emailText, classes.input, "left"),
+    makeFormField(
+      emContact,
+      setEmContact,
+      emContactText,
+      classes.input,
+      "right"
+    ),
+    makeFormField(
+      medications,
+      setMedications,
+      medicationsText,
+      classes.textfield,
+      "whole"
+    ),
+    makeFormField(
+      medicalConditions,
+      setMedicalConditions,
+      medicalConditionsText,
+      classes.textfield,
+      "whole"
+    ),
+    makeFormField(
+      injuriesAllergies,
+      setInjuriesAllergies,
+      injuriesAllergiesText,
+      classes.textfield,
+      "whole"
+    ),
+    makeFormField(
+      experienced,
+      setExperienced,
+      experiencedText,
+      classes.textfield,
+      "whole"
+    ),
+    makeFormField(
+      intentions,
+      setIntentions,
+      intentionsText,
+      classes.textfield,
+      "whole"
+    ),
   ];
+
+  const form = formFields.map((el) => {
+    return (
+      <label className={el.column}>
+        <div className="inputType">{el.text}</div>
+        <input
+          type="text"
+          className={el.class}
+          name={el.getter}
+          onChange={(e) => el.setter(e.target.value)}
+        />
+      </label>
+    );
+  });
 
   return (
     <>
-      <form className="RegistrationForm">
-        {formFields.map((e) => {
-          return (
-            <label>
-              {e.text}
-              <input
-                type="text"
-                className={e.class}
-                name={e.getter}
-                onChange={(e) => e.setter(e.target.value)}
-              />
-            </label>
-          );
-        })}
+      Registration
+      <form id="RegistrationForm">
+        {form}
         <input
           type="submit"
           value="Submit"
