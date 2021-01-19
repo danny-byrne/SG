@@ -129,6 +129,7 @@ export default function Registration() {
       <form id="RegistrationForm">
         {form}
         <input
+          className="submitButton"
           type="submit"
           value="Submit"
           onSubmit={() => console.log("submitting info")}
